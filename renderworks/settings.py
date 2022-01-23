@@ -134,7 +134,6 @@ STATIC_URL = '/static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-BOOTSTRAP5 = {"theme_url": '/home/rik/Documenten/willem/renderworks/static/posts/bootstrap.css'}
 
 STATICFILES_DIRS = [
 os.path.join(BASE_DIR, 'static')
