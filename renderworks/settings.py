@@ -36,7 +36,6 @@ ALLOWED_HOSTS = ['kwikenkwak.herokuapp.com', '127.0.0.1']
 INSTALLED_APPS = [
     'posts',
     'django_bootstrap5',
-    'bootstrap_themes',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
