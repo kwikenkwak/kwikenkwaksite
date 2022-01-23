@@ -54,11 +54,9 @@
             </a>
     </div>
 
-    {% if post.img_name %}
     <a href="{% url 'posts:detail' post.id %}">
-        <img class="card-img-bottom" src="{% static post.img_name %}" alt="Card image">
+        <img class="card-img-bottom" src="{% static post.img_name_small %}" alt="Card image">
     </a>
-    {% endif %}
 </div>
 </div>
 

@@ -1,0 +1,17 @@
+{% extends 'posts/base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+<div class="d-flex justify-content-center">
+<div class="container" style="max-width:80%">
+    <h1 class="text-center">I'm always looking for good ideas that I can render. Do you have one? Fill in this form and submit your idea and I will consider to render it!</h1>
+<form class="uniForm card" method="post" action="{% url 'posts:idea' %}">
+    {% csrf_token %}
+    <div class="card-body">
+    {{ form|crispy }}
+    </div>
+    <button class="btn btn-primary" type="sumbit" value="Submit">Submit your idea</button>
+</form>
+</div>
+</div>
+
+{% endblock content %}

@@ -5,14 +5,14 @@
 <div class="d-md-flex mx-2 justify-content-center flex-wrap">
 <div class="container" style="width:800px;max-width:100%">
 
-{% if object.video_name %}
+{% if object.video_name and False %}
 <div class="card-body">
 <video class="rounded" controls="controls" preload="preload" autoplay="autoplay"
     style="max-width:100%;width:800px;object-fit:fill">
     <source src="{% static object.video_name %}" type="video/mp4"></source>
 </video>
 {% else %}
-    <img class="card-image-top rounded" src="{% static object.img_name %}" class="rounded" style="max-width:100%;width:800px;object-fit:fill;">
+    <img class="card-image-top rounded" src="{% static object.img_name_big %}" class="rounded" style="max-width:100%;width:800px;object-fit:fill;">
 {% endif %}
 
 <div class="row">
@@ -26,7 +26,7 @@
 {% if object.video_name %}
 <a class="btn btn-info float-end" href="{% url 'posts:download' %}?filename={{object.video_name}}">Download Video<span class="bi bi-download ms-2"></span></a>
 {% else %}
-<a class="btn btn-info float-end" href="{% url 'posts:download' %}?filename={{object.img_name}}">Download Image<span class="bi bi-download ms-2"></span></a>
+<a class="btn btn-info float-end" href="{% url 'posts:download' %}?filename={{object.img_name_big}}">Download Image<span class="bi bi-download ms-2"></span></a>
 {% endif %}
 
 </div>

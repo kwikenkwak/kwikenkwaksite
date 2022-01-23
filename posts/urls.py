@@ -14,4 +14,5 @@ urlpatterns = [
         path('detail/<pk>/', views.PostDetail.as_view(), name='detail'),
         path('download_file/', views.download_file, name='download'),
         path('about/', views.about, name='about'),
+        path('submitidea/', views.IdeaCreateView.as_view(), name='idea'),
 ]

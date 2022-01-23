@@ -1,9 +1,10 @@
 import os
 from django.shortcuts import render, redirect
+from django.urls import reverse
 from django.http import HttpResponse
-from django.views.generic.detail import DetailView
+from django.views.generic import DetailView, CreateView
 
-from .models import Post
+from .models import Post, Idea
 
 show_types = ["all", "image", "video"]
 sort_opts = ["newest", "oldest", "alphabetic"]
@@ -11,6 +12,19 @@ sort_map = {'newest': 'upload_date', 'oldest':'-upload_date', 'alphabetic':'titl
 
 def home_basic(request):
     return home(request, "newest", " ", "all")
+
+
+class IdeaCreateView(CreateView):
+    model = Idea
+    template_name = 'posts/idea.html'
+    fields = ['title', 'description', 'email']
+
+    def get_success_url(self):
+        return reverse('posts:home-basic')
+
+
+    def get_absolute_url(self):
+        return reverse(self.request, 'posts:home-basic')
 
 def home(request, sort_option, search, show_type):
     matches = Post.objects.filter(title__contains=search.strip())
