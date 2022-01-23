@@ -1,0 +1,40 @@
+{% extends 'posts/base.html' %}
+{% load static %}
+{% block content %}
+
+<div class="d-md-flex mx-2 justify-content-center flex-wrap">
+<div class="container" style="width:800px;max-width:100%">
+
+{% if object.video_name %}
+<div class="card-body">
+<video class="rounded" controls="controls" preload="preload" autoplay="autoplay"
+    style="max-width:100%;width:800px;object-fit:fill">
+    <source src="{% static object.video_name %}" type="video/mp4"></source>
+</video>
+{% else %}
+    <img class="card-image-top rounded" src="{% static object.img_name %}" class="rounded" style="max-width:100%;width:800px;object-fit:fill;">
+{% endif %}
+
+<div class="row">
+<p class="text-muted" style="display:inline">{{post.upload_date}}</p>
+
+{% if object.block_dropper %}
+<a class="btn btn-dark float-end" href="#">
+    Made with BlockDropper
+</a>
+{% endif %}
+{% if object.video_name %}
+<a class="btn btn-info float-end" href="{% url 'posts:download' %}?filename={{object.video_name}}">Download Video<span class="bi bi-download ms-2"></span></a>
+{% else %}
+<a class="btn btn-info float-end" href="{% url 'posts:download' %}?filename={{object.img_name}}">Download Image<span class="bi bi-download ms-2"></span></a>
+{% endif %}
+
+</div>
+
+<h1>{{ object.title }}</h1>
+
+</div>
+</div>
+</div>
+
+{% endblock content %}

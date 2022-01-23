@@ -1,0 +1,74 @@
+{% extends 'posts/base.html' %}
+{% load static %}
+{% block content %}
+
+
+<div class="d-flex justify-content-end align-content-center">
+<ul class="btn-group">
+<ul class="btn-group-item dropdown">
+  <button type="button" class="btn dropdown-toggle btn-outline-primary" data-bs-toggle="dropdown">
+      {{ sort_opt }}
+  </button>
+  <ul class="dropdown-menu">
+      {% for option in sort_opts %}
+      {% if sort_opt != option %}
+      <li><a class="dropdown-item" href="{% url 'posts:home' option search show_type %}">
+              {{ option }}
+      </a></li>
+      {% endif %}
+      {% endfor %}
+</ul>
+</ul> 
+<ul class="btn-group-item dropdown">
+  <button type="button" class="btn dropdown-toggle btn-outline-primary " data-bs-toggle="dropdown">
+      {{ show_type }}
+  </button>
+  <ul class="dropdown-menu">
+      {% for type in show_types %}
+      {% if type != show_type %}
+      <li><a class="dropdown-item" href="{% url 'posts:home' sort_opt search type %}">
+              {{ type }}
+      </a></li>
+      {% endif %}
+      {% endfor %}
+</ul>
+</ul> 
+</ul>
+
+</div>
+
+
+<div class="d-md-flex mx-2 justify-content-center flex-wrap">
+
+{% if posts %}
+
+{% for post in posts %}
+<div class="container">
+<div class="card m-1 rounded" style="width:400px">
+    <div class="card-header">
+            <p class="lead">{{post.title}}</p>
+                <p class="text-muted" style="display:inline">{{post.upload_date}}</p>
+            <a class="btn btn-outline-secondary float-end" href="{% url 'posts:detail' post.id %}">
+                View
+                <i class="bi-arrow-right"></i>
+            </a>
+    </div>
+
+    {% if post.img_name %}
+    <a href="{% url 'posts:detail' post.id %}">
+        <img class="card-img-bottom" src="{% static post.img_name %}" alt="Card image">
+    </a>
+    {% endif %}
+</div>
+</div>
+
+{% endfor %}
+
+</div>
+
+{% else %}
+<div class="d-flex justify-content-center">
+<h3>No posts were found containing your search text</h3>
+{% endif %}
+{% endblock content %}
+
