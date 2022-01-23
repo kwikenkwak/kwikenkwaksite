@@ -1,5 +1,49 @@
 import os
 
+not_used = [
+{'title':"Mansion construction animation",
+
+            'is_video':True,
+            'filename':'mansion_super_super_small.avi',
+            'video_point':120,
+            'blockdropper':True,
+         'date':'05/07/2020',
+            },
+{'title':"Desert temple construction",
+
+            'is_video':False,
+            'filename':'desert_temple_small.mp4',
+            'video_point':28,
+            'blockdropper':False,
+         'date':'20/06/2020',
+            },
+{'title':"Amount of diamonds you CAN get out of a 300x300 area",
+
+            'is_video':True,
+            'filename':'diamonds_smaller.mp4',
+            'video_point':10,
+            'blockdropper':False,
+         'date':'30/07/2020',
+            },
+{'title':"The amount of dia in a 500x500 area:",
+
+            'is_video':True,
+            'filename':'diamonds_small.mp4',
+            'video_point':5,
+            'blockdropper':False,
+         'date':'01/06/2020',
+            },
+{'title':"Another fountain",
+
+            'is_video':False,
+            'filename':'fontein2.mp4',
+            'video_point':5,
+            'blockdropper':False,
+         'date':'03/06/2020',
+            },
+
+
+]
 
 posts = [
         {'title':"How to build an automatic chicken farm, short and animated",
@@ -136,15 +180,7 @@ posts = [
             'blockdropper':False,
          'date':'01/08/2020',
             },
-    {'title':"Amount of diamonds you CAN get out of a 300x300 area",
-
-            'is_video':True,
-            'filename':'diamonds_smaller.mp4',
-            'video_point':10,
-            'blockdropper':False,
-         'date':'30/07/2020',
-            },
-    {'title':"Dady?",
+        {'title':"Dady?",
 
             'is_video':False,
             'filename':'plume_final.jpg',
@@ -176,23 +212,7 @@ posts = [
             'blockdropper':False,
          'date':'08/07/2020',
             },
-    {'title':"Mansion construction animation",
-
-            'is_video':True,
-            'filename':'mansion_super_super_small.avi',
-            'video_point':120,
-            'blockdropper':True,
-         'date':'05/07/2020',
-            },
-    {'title':"Desert temple construction",
-
-            'is_video':False,
-            'filename':'desert_temple_small.mp4',
-            'video_point':28,
-            'blockdropper':False,
-         'date':'20/06/2020',
-            },
-    {'title':"I made a little construction animation",
+            {'title':"I made a little construction animation",
             'is_video':True,
             'filename':'small_construction.mp4',
             'video_point':20,
@@ -262,23 +282,7 @@ posts = [
             'blockdropper':False,
          'date':'04/06/2020',
             },
-    {'title':"Another fountain",
-
-            'is_video':False,
-            'filename':'fontein2.mp4',
-            'video_point':5,
-            'blockdropper':False,
-         'date':'03/06/2020',
-            },
-    {'title':"The amount of dia in a 500x500 area:",
-
-            'is_video':True,
-            'filename':'diamonds_small.mp4',
-            'video_point':5,
-            'blockdropper':False,
-         'date':'01/06/2020',
-            },
-    {'title':"I tried to make a realistic fountain",
+            {'title':"I tried to make a realistic fountain",
 
             'is_video':True,
             'filename':'fountain.mp4',
