@@ -6,12 +6,12 @@ from django.views.generic import DetailView, CreateView
 
 from .models import Post, Idea
 
-show_types = ["all", "image", "video"]
-sort_opts = ["newest", "oldest", "alphabetic"]
-sort_map = {'newest': 'upload_date', 'oldest':'-upload_date', 'alphabetic':'title'}
+show_types = ["All", "Images", "Videos"]
+sort_opts = ["Newest", "Oldest", "Alphabetic"]
+sort_map = {'Newest': '-upload_date', 'Oldest':'upload_date', 'Alphabetic':'title'}
 
 def home_basic(request):
-    return home(request, "newest", " ", "all")
+    return home(request, "Newest", " ", "All")
 
 
 class IdeaCreateView(CreateView):
@@ -29,9 +29,9 @@ class IdeaCreateView(CreateView):
 def home(request, sort_option, search, show_type):
     matches = Post.objects.filter(title__contains=search.strip())
     matches = matches.order_by(sort_map[sort_option])
-    if show_type == "image":
+    if show_type == "Images":
         matches = [match for match in matches if match.video_name == ""]
-    elif show_type == "video":
+    elif show_type == "Videos":
         matches = [match for match in matches if match.video_name != ""]
 
     available_sort_opts = sort_opts.copy()
