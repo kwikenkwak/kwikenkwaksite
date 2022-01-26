@@ -21,7 +21,7 @@
 }
 .icon-big{
  
-  font-size:10vw;
+  font-size:9vw;
  
 }
     </style>
@@ -96,9 +96,9 @@
           {% block content %}
           {% endblock content %}
         </div>
-        <div class="col-xxl-2 bg-dark flex-wrap bg-dark justify-content-center">
+        <div class="col-xxl-2 flex-wrap justify-content-center">
           <div class="card text-center my-5 border border-0 rounded mx-3">
-                <div class="card-body bg-primary justify-content-center">
+                <div class="card-body bg-primary justify-content-center" style="border-radius:10%">
                   <div class="bg-dark text-primary rounded-pill">
                     Submit your idea
                   </div>
@@ -107,11 +107,11 @@
                 </div>
               </div>
               <div class="card text-center my-5 border border-0 rounded mx-3">
-                <div class="card-body bg-primary justify-content-center">
+                <div class="card-body bg-primary justify-content-center" style="border-radius:10%">
                   <div class="container bg-dark text-primary rounded-pill">
                     Hire me
                   </div>
-                  <div class="bi bi-arrow-down-square-fill icon-big"></div>
+                  <div class="bi bi-person-badge icon-big"></div>
                   <a class="btn btn-outline-secondary rounded" href="{% url 'posts:hire' %}">More</a>
                 </div>
               </div>
