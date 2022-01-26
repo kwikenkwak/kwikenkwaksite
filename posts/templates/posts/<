@@ -1,7 +1,8 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
-  <head> {% if title %}
+  <head>
+    {% if title %}
     <title>KwikenKwak - {{title}}</title>
     {% else %}
     <title>KwikenKwak</title>
@@ -17,7 +18,6 @@
   tabindex: "0";
   overflow-y: scroll;
   position: relative; 
-  z-index:999;
 }
 .icon-big{
  
@@ -80,8 +80,8 @@
                 </button>
                 <ul class="dropdown-menu">
                   <li><a class="dropdown-item" href="{% url 'posts:blockdropper' %}">Blockdropper</a></li>
-                  <li><a class="dropdown-item" href="{% url 'posts:textgen' %}">TextGen</a></li>
-                  <li><a class="dropdown-item" href="{% url 'posts:domino' %}">Dominobuilder</a></li>
+                  <li><a class="dropdown-item" href="#">TextGen</a></li>
+                  <li><a class="dropdown-item" href="#">Domino</a></li>
                 </ul>
               </li>
             </ul>
@@ -96,8 +96,8 @@
           {% block content %}
           {% endblock content %}
         </div>
-        <div class="col-xxl-2 bg-dark flex-wrap bg-dark justify-content-center">
-          <div class="card text-center my-5 border border-0 rounded mx-3">
+        <div class="col-xxl-2 bg-dark flex-wrap bg-dark justify-content-center" style="min-height:100%">
+              <div class="card text-center my-2 border border-0 rounded mx-3" style="min-width:30">
                 <div class="card-body bg-primary justify-content-center">
                   <div class="bg-dark text-primary rounded-pill">
                     Submit your idea
@@ -106,7 +106,7 @@
                   <a class="btn btn-outline-secondary rounded" href="{% url 'posts:idea' %}">More</a>
                 </div>
               </div>
-              <div class="card text-center my-5 border border-0 rounded mx-3">
+              <div class="card text-center my-2 border border-0 rounded mx-3" style="min-width:30%">
                 <div class="card-body bg-primary justify-content-center">
                   <div class="container bg-dark text-primary rounded-pill">
                     Hire me

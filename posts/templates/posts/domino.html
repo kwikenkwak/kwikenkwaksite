@@ -1,0 +1,95 @@
+{% extends 'posts/base.html' %}
+{% load static %}
+{% block content %}
+
+<div class="container justify-content-center">
+  <div class="container px-0" style="position:relative">
+  <img class="border border-5 border-dark" src="{% static 'addons/domino.png' %}" style="width:100%">
+  <div class="m-5 text-primary" style="position:absolute;top:0;left:0;">
+    <p class="display-1" style="text-shadow:  2px 3px 4px #00BBff;"><strong>Dominobuilder</strong></p>
+    <p style="text-shadow:  2px 3px 4px #00BBff;"><strong>A Blender add-on to generate lines of dominos</strong></p>
+  </div>
+  </div>
+  <p class="text-muted" style="display:inline-block">An array of dominos generated with the add-on</p>
+  <a href="https://www.github.com/kwikenkwak/dominobuilder" class="right-wrapper btn btn-dark rounded-0 float-end">View on Github
+    <span class="bi bi-github"></span>
+  </a>
+
+<p class="lead me-5">
+Unlike my other add-ons I never used this add-on for one of my renders on Reddit. I made the add-on because I just liked another coding challenge rather than that I actually needed it for something. Nevertheless, the add-on does perfectly what it is supposed to do, namely generating any array of dominos based on a path object in Blender.
+</p>
+
+<!-- The navbar - The <a> elements are used to jump to a section in the scrollable area -->
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark rounded bg-dark px-3 mt-3">
+  <span class="navbar-brand text-primary">README</span>
+  <ul class="navbar-nav">
+    <li class="nav-item"><a class="nav-link" href="#installation">Installation</a></li>
+    <li class="nav-item"><a class="nav-link" href="#general_usage">Usage</a></li>
+    <li class="nav-item"><a class="nav-link" href="#settings">Settings</a></li>
+    <li class="nav-item"><a class="nav-link" href="#why">Why use this add-on?</a></li>
+  </ul>
+</nav>
+
+<div class="container readme p-3 border border-top-0 border-3 border-dark rounded" data-bs-spy="scroll" data-bs-target=".navbar" data-bs-offset="50" style="height:200px;clear:right">
+<div id="installation">
+  <h2>Installation</h2>
+  <ul>
+    <li>Download the dominobuilder.py file from this repository.</li>
+<li>Open blender and go to Edit->Preferences->Add-ons.</li>
+<li>Click on install and choose the dominobuilder.py file.</li>
+  <li>Click the check button to enable the add-on.</li>
+  </ul>
+</div>
+
+<div id="general_usage">
+  <h2>Usage</h2>
+  <p>
+This add-on generates a line of dominoes based on a given curve, you can choose which object is used as dominobrick.
+      </p>
+</div>
+
+<div id="settings">
+  <h3>Settings</h3>
+  <dl>
+    <dt>Set exact amount</dt>
+    <dd>
+Click this on if you want to specify the specific amount of dominoes instead of the add-on automatically calculating the amount based on a given spacing.
+    </dd>
+    <dt>Spacing(visible when set exact amount is disabled)</dt>
+    <dd>
+The amount of spacing between each domino which is relative to the width of each domino(y dimension).
+Tip: 4 looks good and falls well.
+    </dd>
+    <dt>Amount(visible when set exact amount is enabled)</dt>
+    <dd>
+The amount of dominoes which are spread equally along the curve.
+    </dd>
+    <dt>Scale</dt>
+    <dd>
+Set the scale of each domino relative to the size of the source brick.
+    </dd>
+    <dt>Dominobrick</dt>
+    <dd>
+Set the object which will get used as the dominobricks if you want a pretty nice standard domino with procedural shaders checkout the standarddomino.blend file in this repository.
+    </dd>
+    <dt>Curve</dt>
+    <dd>
+Set the curve object on which the dominoes will get spread.
+    </dd>
+    <dt>Update dominoes</dt>
+    <dd>
+Updates the dominoes, use this when you made changes to the curve or to the standard dominobrick.
+    </dd>
+  </dl>
+</div>
+<div id="why">
+  <h4>Why use this add-on? This is pretty easy to do in Blender without help</h4>
+  This addon has multiple advantages over the default blender approuch.
+  You can set the amount of spacing between the dominoes but most importantly this add-on makes the object generation much faster and easier, especially setting the bricks as rigidbody will take a lot of time if you use the copy rigidbody from active tool in Blender which is for some unknown reason very inefficient.
+</div>
+
+</div>
+</div>
+
+
+{% endblock content %}

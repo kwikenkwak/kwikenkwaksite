@@ -1,0 +1,35 @@
+{% load static %}
+{% if posts %}
+
+<div class="d-flex mx-2 justify-content-center flex-wrap">
+
+{% for post in posts %}
+
+<!-- Dummy div is needed in order for the card border to wrap the tight around the content even
+when there are multiple cards on a row and their content is not the same height -->
+<div>
+<div class="card m-1 rounded" style="width:400px">
+    <div class="card-header">
+            <p class="lead">{{post.title}}</p>
+                <p class="text-muted" style="display:inline">{{post.upload_date}}</p>
+            <a class="btn btn-outline-secondary float-end" href="{% url 'posts:detail' post.id %}">
+                View
+                <i class="bi-arrow-right"></i>
+            </a>
+    </div>
+
+    <a href="{% url 'posts:detail' post.id %}">
+        <img class="card-img-bottom" src="{% static post.img_name_small %}" alt="Card image">
+    </a>
+</div>
+</div>
+
+{% endfor %}
+
+</div>
+
+{% else %}
+<h3>No posts were found containing your search text</h3>
+{% endif %}
+
+

@@ -1,0 +1,116 @@
+{% extends 'posts/base.html' %}
+{% load static %}
+{% block content %}
+
+<div class="container justify-content-center">
+  <div class="container px-0" style="position:relative">
+  <img class="border border-5 border-dark" src="{% static 'addons/blockdropper.png' %}" style="width:100%">
+  <div class="m-5 text-primary" style="position:absolute;top:0;left:0;">
+    <p class="display-1" style="text-shadow:  2px 3px 4px #00BBff;"><strong>Blockdropper</strong></p>
+    <p style="text-shadow:  2px 3px 4px #00BBff;"><strong>A Blender add-on for minecraft animations</strong></p>
+  </div>
+  </div>
+  <p class="text-muted" style="display:inline-block">The add-on in action</p>
+  <a href="https://www.github.com/kwikenkwak/blockdropper" class="right-wrapper btn btn-dark rounded-0 float-end">View on Github
+    <span class="bi bi-github"></span>
+  </a>
+
+<p class="lead me-5">
+When I was making the animated tutorials it my animation workflow was a real struggle because manually keyframing all the blocks is a lot of work and it is very hard to make adjustments later on. So I started with making a simple Python script in Blender but I wanted some more functionality so I turned it in an add-on. The result is a simple but very powerfull add-on that makes making animated instruction videos a pleasure to do as I can now focus on the creative part.
+</p>
+
+<!-- The navbar - The <a> elements are used to jump to a section in the scrollable area -->
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark rounded bg-dark px-3 mt-3">
+  <span class="navbar-brand text-primary">README</span>
+  <ul class="navbar-nav">
+    <li class="nav-item"><a class="nav-link" href="#installation">Installation</a></li>
+    <li class="nav-item"><a class="nav-link" href="#general_usage">Usage</a></li>
+    <li class="nav-item"><a class="nav-link" href="#settings">General settings</a></li>
+    <li class="nav-item"><a class="nav-link" href="#block_array">Block array</a></li>
+    <li class="nav-item"><a class="nav-link" href="#block_settings">Block settings</a></li>
+    <li class="nav-item"><a class="nav-link" href="#block_navigation">Block navigation</a></li>
+    <li class="nav-item"><a class="nav-link" href="#block_keyframing">Block keyframing</a></li>
+    <li class="nav-item"><a class="nav-link" href="#shortcut_key">Shortcut key</a></li>
+  </ul>
+</nav>
+
+<div class="container readme p-3 border border-top-0 border-3 border-dark rounded" data-bs-spy="scroll" data-bs-target=".navbar" data-bs-offset="50" style="height:200px;clear:right">
+<div id="installation">
+  <h2>Installation</h2>
+  <ul>
+    <li>Download the blockdropper.py file from this repository</li>
+    <li>Open blender go to Edit->Preferences->Add-ons</li>
+    <li>Click on install and choose the blockdropper.py file</li>
+    <li>Click on the box to enable the add-on</li>
+  </ul>
+</div>
+
+<div id="general_usage">
+  <h2>Usage</h2>
+  <p>
+First of all you make sure you have the blocks you want to animate as seperate objects in your blender file, you can do this using jmc2obj or other programs to load data from your minecraft world
+
+Now you can start animating! The workflow goes like this: you add your objects to the block array and then when ready you click on "Add Keyframes" and it will auto-generate the keyframes all by itself
+      </p>
+</div>
+
+<div id="settings">
+  <h3>General settings</h3>
+  <ul>
+    <li>Starting keyframe: keyframe to start animation at this is when the first block will begin to fall</li>
+    <li>Dropheight: height in meters the blocks will be dropped from</li>
+    <li>Default delay: the amount of keyframes between each block that has it delay setting set to -1 you can use this setting so you can change the delay of a lot of blocks at once</li>
+    <li>Default droptime: same as above but for the amount of keyframes it will take for the block to reach the destination location</li>
+    <li>Default sense: same as above but for the sense of the movement of the blocks</li>
+    <li>Default direction: same as above but for the direction of the movement of the blocks</li>
+  </ul>
+</div>
+
+<div id="block_array">
+  <h4>Block Array</h4>
+Here you can see the block array selecting an item here will result in the item being selected in the viewport
+<ul>
+  <li>You can add and remove an object with the "+" and "-" buttons.</li>
+  <li>The "Find active" button will search the array for the currently selected block and select that item if it is found</li>
+</ul>
+</div>
+
+<div id="block_settings">
+  <h4>Block settings</h4>
+Here you can change the settings of the item that is currently selected
+
+<ul>
+  <li>Object: the object that this item points to</li>
+<li>Delay: the amount of keyframes until the next block will start to fall use -1 to use the default delay</li>
+<li>Droptime: the amount of keyframes that it will take the block to reach te ground, use -1 to use the default droptime</li>
+<li>Sense: the sense/flow in which the block travels choose between to and from original location</li>
+  <li>Direction: the direction of the blocks movement relative to the original location of the block</li>
+</ul>
+</div>
+
+<div id="block_navigation">
+  <h4>Block navigation</h4>
+
+Here you find 6 buttons to easily automatically add blocks to the array and navigate through them. When you click on a button it will try to find a block that is next to the currently active block in the specific direction. In order for these buttons to work well blocks should be 1m³ and have there center at x.5 y.5 z.5!
+</div>
+
+<div id="block_keyframing">
+  <h4>Block keyframing</h4>
+  <ul>
+  <li>Add keyframes: generates the keyframes for the animation</li>
+  <li>Delete keyframes: deletes the applied keyframes of the objects and puts them back at there original positions</li>
+  </ul>
+</div>
+
+<div id="shortcut_key">
+  <h4>Shortcut key</h4>
+The add-on also has a shortcut key, if you press Ctrl-W while in the viewport the addon will automatically add the currently active object to the array, it will add it after the currently selected block and the block's settings(except the object property) will be copied from it.
+
+</div>
+</div>
+<h4 class="my-2">Posts made with the add-on:</h4>
+{% include 'posts/postrender.html' with posts=posts %}
+</div>
+
+
+{% endblock content %}

@@ -1,11 +1,10 @@
 {% extends 'posts/base.html' %}
 {% load static %}
 {% block content %}
+<div class="container">
+<ul class="btn-group px-0">
 
-
-<div class="d-flex justify-content-end align-content-center">
 <ul class="btn-group">
-<ul class="btn-group-item dropdown">
   <button type="button" class="btn dropdown-toggle btn-outline-primary" data-bs-toggle="dropdown">
       {{ sort_opt }}
   </button>
@@ -17,10 +16,10 @@
       </a></li>
       {% endif %}
       {% endfor %}
-</ul>
+  </ul>
 </ul> 
-<ul class="btn-group-item dropdown">
-  <button type="button" class="btn dropdown-toggle btn-outline-primary " data-bs-toggle="dropdown">
+<div class="btn-group">
+  <button type="button" class="btn dropdown-toggle btn-outline-primary" data-bs-toggle="dropdown">
       {{ show_type }}
   </button>
   <ul class="dropdown-menu">
@@ -31,42 +30,13 @@
       </a></li>
       {% endif %}
       {% endfor %}
+  </ul>
 </ul>
-</ul> 
+
 </ul>
-
 </div>
 
+{% include 'posts/postrender.html' with objects=context%}
 
-<div class="d-md-flex mx-2 justify-content-center flex-wrap">
-
-{% if posts %}
-
-{% for post in posts %}
-<div class="container">
-<div class="card m-1 rounded" style="width:400px">
-    <div class="card-header">
-            <p class="lead">{{post.title}}</p>
-                <p class="text-muted" style="display:inline">{{post.upload_date}}</p>
-            <a class="btn btn-outline-secondary float-end" href="{% url 'posts:detail' post.id %}">
-                View
-                <i class="bi-arrow-right"></i>
-            </a>
-    </div>
-
-    <a href="{% url 'posts:detail' post.id %}">
-        <img class="card-img-bottom" src="{% static post.img_name_small %}" alt="Card image">
-    </a>
-</div>
-</div>
-
-{% endfor %}
-
-</div>
-
-{% else %}
-<div class="d-flex justify-content-center">
-<h3>No posts were found containing your search text</h3>
-{% endif %}
 {% endblock content %}
 

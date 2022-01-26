@@ -37,7 +37,7 @@ def home(request, sort_option, search, show_type):
     available_sort_opts = sort_opts.copy()
     available_sort_opts.remove(sort_option)
 
-    return render(request, 'posts/home.html', 
+    return render(request, 'posts/home.html',
             {'posts': matches,
             'sort_opts': available_sort_opts,
             'sort_opt': sort_option,
@@ -64,6 +64,18 @@ class PostDetail(DetailView):
         return context
 
 
+def blockdropper(request):
+    return render(request, 'posts/blockdropper.html', {'posts':Post.objects.all().filter(block_dropper=True)})
+
+def domino(request):
+    return render(request, 'posts/domino.html')
+
+def textgen(request):
+    return render(request, 'posts/textgen.html')
+
+def hire(request):
+    return render(request, 'posts/hire.html')
+
 def download_file(request):
     BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -75,7 +87,7 @@ def download_file(request):
     # and others
 
     response = HttpResponse(path)
-    
+
     response['Content-Disposition'] = "attachment; filename=%s" % \
         request.GET['filename'].split('/')[-1]
     return response
