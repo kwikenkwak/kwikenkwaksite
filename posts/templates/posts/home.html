@@ -2,9 +2,9 @@
 {% load static %}
 {% block content %}
 <div class="container">
-<ul class="btn-group px-0">
-
 <ul class="btn-group">
+
+<div class="btn-group">
   <button type="button" class="btn dropdown-toggle btn-outline-primary" data-bs-toggle="dropdown">
       {{ sort_opt }}
   </button>
@@ -17,7 +17,8 @@
       {% endif %}
       {% endfor %}
   </ul>
-</ul> 
+</div> 
+
 <div class="btn-group">
   <button type="button" class="btn dropdown-toggle btn-outline-primary" data-bs-toggle="dropdown">
       {{ show_type }}
@@ -31,7 +32,7 @@
       {% endif %}
       {% endfor %}
   </ul>
-</ul>
+</div>
 
 </ul>
 </div>
