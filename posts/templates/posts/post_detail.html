@@ -2,7 +2,7 @@
 {% load static %}
 {% block content %}
 
-<div class="container-fluid" style="max-width:80%">
+<div class="container" style="max-width:100%;width:1200px">
 
 {% if object.video_name and False %}
 <video class="rounded" controls="controls" preload="preload" autoplay="autoplay"
@@ -10,22 +10,25 @@
     <source src="{% static object.video_name %}" type="video/mp4"></source>
 </video>
 {% else %}
-<img class="card-image-top rounded" src="{% static object.img_name_big %}" class="rounded" style="max-width:100%">
+<img class="rounded" src="{% static object.img_name_big %}" class="rounded" style="max-width:100%">
 {% endif %}
 
-<p class="text-muted" style="display:inline">{{post.upload_date}}</p>
+<div class="d-flex">
+<p class="text-muted me-auto">{{post.upload_date}}</p>
 
 {% if object.block_dropper %}
-<a class="btn btn-secondary text-primary float-end" href="{% url 'posts:blockdropper' %}">
+<a class="btn btn-secondary text-primary" href="{% url 'posts:blockdropper' %}">
     Made with BlockDropper
 </a>
 {% endif %}
 
 {% if object.video_name %}
-<a class="btn btn-primary float-end" href="{% url 'posts:download' %}?filename={{object.video_name}}">Download Video<span class="bi bi-download ms-2"></span></a>
+<a class="btn btn-primary" href="{% url 'posts:download' %}?filename={{object.video_name}}">Download Video<span class="bi bi-download ms-2"></span></a>
 {% else %}
-<a class="btn btn-primary float-end" href="{% url 'posts:download' %}?filename={{object.img_name_big}}">Download Image<span class="bi bi-download ms-2"></span></a>
+<a class="btn btn-primary" href="{% url 'posts:download' %}?filename={{object.img_name_big}}">Download Image<span class="bi bi-download ms-2"></span></a>
 {% endif %}
+
+</div>
 
 
 <h1>{{ object.title }}</h1>

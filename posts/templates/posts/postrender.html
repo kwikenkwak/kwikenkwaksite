@@ -1,15 +1,15 @@
 {% load static %}
 
-<div style="width:100%">
-  <div class="d-flex mx-2 justify-content-center flex-wrap">
+<div style="max-width:100%">
+<div class="d-flex mx-2 justify-content-center flex-wrap">
 
 {% if posts %}
 {% for post in posts %}
 
 <!-- Dummy div is needed in order for the card border to wrap the tight around the content even
 when there are multiple cards on a row and their content is not the same height -->
-<div>
-  <div class="card m-3 rounded" style="max-width:400px">
+<div style="flex-basis:400px">
+  <div class="card m-3 rounded">
     <div class="card-header">
             <p class="lead">{{post.title}}</p>
                 <p class="text-muted" style="display:inline">{{post.upload_date}}</p>
