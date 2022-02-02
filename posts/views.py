@@ -10,9 +10,6 @@ show_types = ["All", "Images", "Videos"]
 sort_opts = ["Newest", "Oldest", "Alphabetic"]
 sort_map = {'Newest': '-upload_date', 'Oldest':'upload_date', 'Alphabetic':'title'}
 
-def home_basic(request):
-    return home(request, "Newest", " ", "All")
-
 
 class IdeaCreateView(CreateView):
     model = Idea
@@ -20,36 +17,16 @@ class IdeaCreateView(CreateView):
     fields = ['title', 'description', 'email']
 
     def get_success_url(self):
-        return reverse('posts:home-basic')
+        return reverse('posts:home')
 
 
     def get_absolute_url(self):
-        return reverse(self.request, 'posts:home-basic')
+        return reverse(self.request, 'posts:home')
 
-def home(request, sort_option, search, show_type):
-    matches = Post.objects.filter(title__contains=search.strip())
-    matches = matches.order_by(sort_map[sort_option])
-    if show_type == "Images":
-        matches = [match for match in matches if match.video_name == ""]
-    elif show_type == "Videos":
-        matches = [match for match in matches if match.video_name != ""]
 
-    available_sort_opts = sort_opts.copy()
-    available_sort_opts.remove(sort_option)
-
+def home(request):
     return render(request, 'posts/home.html',
-            {'posts': matches,
-            'sort_opts': available_sort_opts,
-            'sort_opt': sort_option,
-            'search':search,
-            'show_types': show_types,
-            'show_type': show_type}
-            )
-
-def search_home(request, sort_option, show_type):
-    search = request.GET['searchtext']
-    if not search: search = " "
-    return home(request, sort_option, search, show_type)
+            {'posts': Post.objects.all()})
 
 
 def about(request):
@@ -65,7 +42,8 @@ class PostDetail(DetailView):
 
 
 def blockdropper(request):
-    return render(request, 'posts/blockdropper.html', {'posts':Post.objects.all().filter(block_dropper=True)})
+    return render(request, 'posts/blockdropper.html',
+            {'posts':Post.objects.all().filter(block_dropper=True)})
 
 def domino(request):
     return render(request, 'posts/domino.html')

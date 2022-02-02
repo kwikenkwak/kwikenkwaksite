@@ -1,0 +1,12 @@
+#searchclear {
+  position: absolute;
+  right: 0.5rem;
+  top: -0.5rem;
+  font-size: 2rem;
+  cursor: pointer;
+  color: #ccc;
+}
+
+#searchclear:hover {
+  color: #aaa;
+}

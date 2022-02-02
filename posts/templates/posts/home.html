@@ -1,40 +1,49 @@
 {% extends 'posts/base.html' %}
 {% load static %}
 {% block content %}
-<div class="container">
-<ul class="btn-group">
+<div class="container d-flex align-items-center justify-content-center">
+<ul class="btn-group m-0 p-0">
 
 <div class="btn-group">
-  <button type="button" class="btn dropdown-toggle btn-outline-primary" data-bs-toggle="dropdown">
-      {{ sort_opt }}
+  <button id="sort-option-selected" type="button" class="btn dropdown-toggle btn-outline-primary" data-bs-toggle="dropdown">
+    Newest
   </button>
   <ul class="dropdown-menu">
-      {% for option in sort_opts %}
-      {% if sort_opt != option %}
-      <li><a class="dropdown-item" href="{% url 'posts:home' option search show_type %}">
-              {{ option }}
+    {# {% for option in list(["Newest", "Oldest", "Alphabetic"]) %} #}
+    <li><a class="dropdown-item sort-option">
+        Alphabetic
       </a></li>
-      {% endif %}
-      {% endfor %}
+    <li><a class="dropdown-item sort-option">
+        Oldest
+      </a></li>
+
   </ul>
 </div> 
 
 <div class="btn-group">
-  <button type="button" class="btn dropdown-toggle btn-outline-primary" data-bs-toggle="dropdown">
-      {{ show_type }}
+  <button type="button" id="view-option-selected" class="btn dropdown-toggle btn-outline-primary" data-bs-toggle="dropdown">
+    All
   </button>
   <ul class="dropdown-menu">
-      {% for type in show_types %}
-      {% if type != show_type %}
-      <li><a class="dropdown-item" href="{% url 'posts:home' sort_opt search type %}">
-              {{ type }}
+    <li><a class="dropdown-item view-option">
+          Images
       </a></li>
-      {% endif %}
-      {% endfor %}
+      <li><a class="dropdown-item view-option">
+          Videos
+      </a></li>
+
   </ul>
 </div>
 
 </ul>
+
+<div class="btn-group">
+<input id="searchbar" class="form-control mx-2" name="searchtext" type="text" placeholder="Search post"
+                     style="width:200px">
+<span id="searchclear" class="bi bi-x"></span>
+
+</div>
+
 </div>
 
 {% include 'posts/postrender.html' with objects=context%}
