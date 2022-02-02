@@ -19,6 +19,9 @@ class IdeaCreateView(CreateView):
     def get_success_url(self):
         return reverse('posts:home')
 
+    def get_context_data(self):
+        return {'title':'Submit your idea'}
+
 
     def get_absolute_url(self):
         return reverse(self.request, 'posts:home')
@@ -30,7 +33,7 @@ def home(request):
 
 
 def about(request):
-    return render(request, 'posts/about.html')
+    return render(request, 'posts/about.html', {'title':'About'})
 
 class PostDetail(DetailView):
     model = Post
@@ -43,16 +46,19 @@ class PostDetail(DetailView):
 
 def blockdropper(request):
     return render(request, 'posts/blockdropper.html',
-            {'posts':Post.objects.all().filter(block_dropper=True)})
+            {'posts':Post.objects.all().filter(block_dropper=True),
+                'title':'Blockdropper add-on'
+                }
+            )
 
 def domino(request):
-    return render(request, 'posts/domino.html')
+    return render(request, 'posts/domino.html', {'title':'Domino add-on'})
 
 def textgen(request):
-    return render(request, 'posts/textgen.html')
+    return render(request, 'posts/textgen.html', {'title':'TextGen add-on'})
 
 def hire(request):
-    return render(request, 'posts/hire.html')
+    return render(request, 'posts/hire.html', {'title':'Hire me'})
 
 def download_file(request):
     BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
