@@ -1,0 +1,59 @@
+.readme {
+  tabindex: "0";
+  overflow-y: scroll;
+  position: relative; 
+  z-index:999;
+}
+
+.icon-big{
+
+  font-size:8.5rem;
+
+}
+
+@media (max-width: 1399px) {
+  .hide-non-big {
+    display: none;
+  }
+}
+
+@media only screen and (min-width: 600px) {
+  .show-mobile{
+    display:none;
+  }
+}
+
+
+@media only screen and (max-width: 600px) {
+  #website-navbar {
+    padding: 0;
+  }
+  #navbar-logo {
+    display: none;
+  }
+  .hide-mobile {
+    display: none;
+  }
+  .navbar-icon {
+    display: block;
+    font-size: 2rem;
+    text-align: center;
+  }
+
+.nav-link-text {
+  display: block;
+  text-align: center;
+    font-size: 1rem;
+  }
+
+  .website-links {
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+    margin-start: 0px;
+  }
+  .add-on-dropdown {
+    margin: 0px;
+  }
+}
+

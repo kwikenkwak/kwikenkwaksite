@@ -19,8 +19,10 @@ class IdeaCreateView(CreateView):
     def get_success_url(self):
         return reverse('posts:home')
 
-    def get_context_data(self):
-        return {'title':'Submit your idea'}
+    def get_context_data(self, **kwargs):
+        context = super(IdeaCreateView, self).get_context_data(**kwargs)
+        context['title'] = 'Submit your idea'
+        return context
 
 
     def get_absolute_url(self):
