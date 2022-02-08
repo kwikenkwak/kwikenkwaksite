@@ -1,4 +1,4 @@
-console.log("hello world");
+//console.log("hello world");
 
 var searchbar = document.getElementById("searchbar");
 var sortOpt = "Newest";
@@ -44,35 +44,39 @@ function changeSortOption(e){
   }
 
 function updateSortOpt(){
+
   var postItems = Array.from(document.getElementsByClassName("post-item"));
   if(sortOpt == "Newest")
     postItems.sort(newestSort);
   else if(sortOpt == "Oldest")
     postItems.sort(oldestSort);
   else
-    postItems.sort(alphabeticSort);
+    postItems = postItems.sort(alphabeticSort);
+
   for(let i = 0; i < postItems.length; i++){
-    postItems[i].style.order = postItems.indexOf(postItems[i]);
+    console.log(i, postItems[i]);
+    postItems[i].style.order = postItems.indexOf(postItems[i]) + 1;
+    console.log(postItems[i].getAttribute("data-title"), postItems[i].style.order);
   }
 }
 
 function newestSort(a, b){
   var dataA = a.getAttribute("data-date");
   var dataB = b.getAttribute("data-date");
-  return dataA < dataB;
+  return dataA < dataB ? 1 : -1;
 }
 
 function oldestSort(a, b){
   var dataA = a.getAttribute("data-date");
   var dataB = b.getAttribute("data-date");
   console.log(dataA);
-  return dataA > dataB;
+  return dataA > dataB ? 1 : -1;
 }
 
 function alphabeticSort(a, b){
   var titleA = a.getAttribute("data-title").toLowerCase();
   var titleB = b.getAttribute("data-title").toLowerCase();
-  return titleA > titleB;
+  return titleA > titleB ? 1 : -1;
 }
 
 var clearButton = document.getElementById("searchclear");
@@ -103,5 +107,7 @@ function changeViewOption(e){
   updatePostVisibility();
 }
 
-updatePostVisibility();
-updateSortOpt();
+document.addEventListener("DOMContentLoaded", () =>{
+  updatePostVisibility();
+  updateSortOpt();
+});

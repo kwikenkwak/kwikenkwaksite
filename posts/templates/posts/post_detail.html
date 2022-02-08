@@ -29,9 +29,8 @@
   <span class="bi bi-download ms-2"></span>
   <span class="bi bi-exclamation-circle ms-2"></span>
 </button>
-
 {% else %}
-<a class="btn btn-primary" href="{ url 'posts:download' %}?filename={{object.img_name_big}}">Download Image<span class="bi bi-download ms-2"></span></a>
+<a class="btn btn-primary" href="{% url 'posts:download' %}?filename={{object.img_name_big}}">Download Image<span class="bi bi-download ms-2"></span></a>
 {% endif %}
 
 </div>
